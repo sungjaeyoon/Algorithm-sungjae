@@ -1,9 +1,10 @@
+import sys
 n, k = map(int, input().split())
 
 product = [[0, 0]]
 
 for _ in range(n):
-    product.append(list(map(int, input().split())))
+    product.append(list(map(int, sys.stdin.readline().rstrip().split())))
 
 dp = [[0 for _ in range(k + 1)] for _ in range(n + 1)]
 

@@ -1,20 +1,16 @@
 n, k = map(int, input().split())
 
-product_list = []
-dp = [0] * (k + 1)
+product = [[0, 0]]
 
-for i in range(n):
-    w, v = map(int, input().split())
-    if w <= k:
-        product_list.append([w, v])
+for _ in range(n):
+    product.append(list(map(int, input().split())))
 
-for i in range(1, k + 1):
-    dp[i] = dp[i-1]
-    for product in product_list:
-        if i == product[0]:
-            dp[i] = max(dp[i], product[1])
-        if i - product[0] >= 0:
-            dp[i] = max(dp[i], dp[i-product[0]] + product[1])
+dp = [[0 for _ in range(k + 1)] for _ in range(n + 1)]
 
+for i in range(1, n + 1):
+    for j in range(1, k + 1):
+        dp[i][j] = dp[i - 1][j]
+        if j >= product[i][0]:
+            dp[i][j] = max(dp[i][j], dp[i - 1][j - product[i][0]] + product[i][1])
 
-print(dp)
+print(dp[n][k])

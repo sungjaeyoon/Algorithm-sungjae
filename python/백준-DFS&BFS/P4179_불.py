@@ -1,7 +1,7 @@
 from collections import deque
 import sys
 
-inputs = sys.stdin.readline
+input = sys.stdin.readline
 
 
 def bfs():
@@ -34,13 +34,13 @@ def bfs():
 
 dx = [1, -1, 0, 0]
 dy = [0, 0, -1, 1]
-r, c = map(int, inputs().split())
+r, c = map(int, input().split())
 s = []
 q = deque()
 f = deque()
 visit = [[0] * c for i in range(r)]
 for i in range(r):
-    a = list(inputs().strip())
+    a = list(input().strip())
     s.append(a)
     for j in range(c):
         if a[j] == "J":
